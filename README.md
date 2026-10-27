@@ -1,11 +1,9 @@
-# TIC-80 Example Core
+# TIC-80 Lua 5.5
 
-An example of building a script core outside of the TIC-80 codebase.
+A Lua 5.5.1-based core for TIC-80's dynamic script runtime system.
 
 ## How to build
 
-Clone TIC-80 next to this repository (you don't need to do a recursive checkout; this is just so that this repository has access to the TIC-80 headers).
+Clone this repository next to TIC-80, and use cmake to build it. You should get a `lua55.dll` (or `.dylib` or `.so`, depending on platform).
 
-Run `tool/generate_demo_cart.py` to generate `src/democart.dat`, and then use cmake to build the project. You should get an `examplecore.dll` (or `.dylib` or `.so`, depending on platform).
-
-Drop this dynamic library into a build of TIC-80 1.2 or newer (use the [nightly](https://nightly.link/nesbox/TIC-80/workflows/build/main) if you're unsure) and run TIC-80; you should be able to run `new examplecore` and then run the resulting cart, which should work.
+You will, unfortunately, have to build TIC-80 yourself, since modern TIC-80 builds the language runtimes statically by default, but if you do, you can toss the shared library into the same directory as the TIC-80 binary and create a lua cart with `-- script: lua55`. Now you can use the new features in Lua that have come since 5.3.6.
